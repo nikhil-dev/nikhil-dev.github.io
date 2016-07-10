@@ -6,7 +6,7 @@ categories: jekyll update
 permalink: the-interesting-internet
 ---
 
-I'll use this post to share things I've found interesting on the web.
+I'll use this post to share things I've found interesting on the web. I'll update this in batches every once in a while.
 
 
 [Concurrency Is Not Parallelism][concurrency_parallelism]
