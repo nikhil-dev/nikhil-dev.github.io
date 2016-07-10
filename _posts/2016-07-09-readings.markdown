@@ -3,7 +3,7 @@ layout: post
 title:  "Things I've been Reading & Watching"
 date:   2016-06-25 18:37:23 -0700
 categories: jekyll update
-permalink: readings
+permalink: the-interesting-internet
 ---
 
 I'll use this post to share things I've found interesting on the web.
