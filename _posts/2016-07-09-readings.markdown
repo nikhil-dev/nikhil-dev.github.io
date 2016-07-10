@@ -14,7 +14,7 @@ I'll use this post to share things I've found interesting on the web.
 Rob Pike's talk on the difference between concurrency and parallelism. Rob worked on Unix at Bell Labs and now works on the Go programming language at Google.
 
 
-[How Much Is Our Lives Better Really?][eric-thiel]
+[How Has The Internet Made Our Lives Better Really?][eric-thiel]
 -
 People in the tech industry often argue about its benefits. In this debate, Peter Thiel and Eric Schmidt dig a bit into how much computers have really made our lives better, and how they haven't.
 
