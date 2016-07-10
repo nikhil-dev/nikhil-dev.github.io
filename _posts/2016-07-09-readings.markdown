@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "Things I've been Reading & Watching"
+date:   2016-06-25 18:37:23 -0700
+categories: jekyll update
+permalink: readings
+---
+
+I'll use this post to share things I've found interesting on the web.
+
+
+[Concurrency Is Not Parallelism][concurrency_parallelism]
+-
+Rob Pike's talk on the difference between concurrency and parallelism. Rob worked on Unix at Bell Labs and now works on the Go programming language at Google.
+
+
+[How Much Is Our Lives Better Really?][eric-thiel]
+-
+People in the tech industry often argue about its benefits. In this debate, Peter Thiel and Eric Schmidt dig a bit into how much computers have really made our lives better, and how they haven't.
+
+
+[The Future of Programming - Bret Victor][future of programming]
+-
+Bret Victor talks about the future of programming as it presented itself in 1973.
+
+[concurrency_parallelism]: https://vimeo.com/49718712
+[eric-thiel]: https://www.youtube.com/watch?v=PsXFwy6gG_4
+[future of programming]: https://vimeo.com/71278954
