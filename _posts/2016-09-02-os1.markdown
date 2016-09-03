@@ -1,0 +1,101 @@
+---
+layout: post
+title:  "Notes on OS Reading"
+date:   2016-09-02 18:37:23 -0700
+categories: jekyll update
+permalink: os-ch-1-part-1
+---
+
+Here are my notes from the first half of the frist chapter of the book Modern Operating Systems, by Tanenbaum and Bos.
+
+**introduction**
+============
+
+there is user mode and then there is kernel mode. user mode can execute a subset of instructions, kernel mode can execute all. a part of the OS runs in kernel mode, a part in user mode. all user programs run in user mode. some OSes are designed to run bigger parts of the itself in user mode.
+
+shells and gui interface to the system are not part of the OS (presumably for linux)!
+
+the os does two things:
+1. define clear abstractions so programmers can program without thinking about the details of disks, memory, I/O devices etc.
+2. implement these abstractions in a way that manages the underlying resources for different user programs.
+
+the problem they solve is taking bare hardware and together, writing useful programs on it. that is a pretty complex thing to do. in general, complex systems do two things:
+1. define and implement clear abstractions. (the OS)
+2. use those abstractions to solve problems. (user programs)
+
+the OS turns ugly interfaces that programmers shouldn't give a shit about to interfaces that presents concepts that make sense for programmers, like files, processes, threads etc
+
+multiplexing means sharing.
+
+the operating system multiplexes resources among programs and users in two ways:
+time multiplexing: letting processes use resources for a certain time (eg. cpu)
+space multiplexing: letting processes use parts of resources (eg. memory, disk)j
+
+**history**
+=======
+
+charles babbage in early 1800s: "analytical engine". hired ada lovelace to program it - she is the first programmer ever.
+
+1945-55: vacuum tubes. programming in machine language. then it improved to punched cards which could be compiled to machine language.
+
+1955-65: transistors and batch systems: cpu time wasn't wasted loading programs from cards - separate machines existed to load programs onto tapes and these tapes would just be carried over to the real computers.
+
+1965-80: ICs and multiprogramming. once time waste was cut down loading programs from punch cards, the next time waste was wasted cpu time waiting for I/O. solution: multiprogramming. this is shared memory. programmers wanted interactive access to computers (not just submitting jobs and waiting and then find out there was a bug). so was born timesharing and the MULTICS (multiplexed information and computing service) project at MIT with collaboration from Bell Labs, GE.
+
+Around then was also the growth of minicomputers, starting with DEC PDP-1. Ken Thompson, at Bell Labs, found a spare PDP-7 lying round and wrote a stripped down, one user version of MULTICS. this developed into unix. two major versions of unix were developed - System V and BSD. IEEE introduced POSIX (portable os interface) around this time. POSIX is a minimal system-call interface specification. a clone of UNIX, MINIX, a small version for educational purposes was released. this inspired a finnish student, Linus torvarld to pick it up and develop minix into a production grade os - linux.
+
+1980s and beyond
+================
+
+chip technology got really good at fitting more transistors onto just a few square centimeters. now people started thinking about having a computer for themselves. a guy named gary kildall built an OS for intel's first ever 8-bit, general purpose cpu. intel didn't want a disk based one so they gave it back to him. he made a company with it.
+
+intel asked bill gates who referred them back to kildall's company and intel wanted kildall's again but he refused to meet them. he didn't welcome their request. intel asked gates again, who bought a system called DOS from a local seattle company.
+gates (licensed?) it to them. they wanted changes that gates hired programmers to do and called it MS-DOS. selling ms-dos to computer manufacturers v/s to end users is considered a key strategic move by microsoft, as opposed to digital research which sold to end users.
+
+all these os's had CLIs. doug engelbart in stanford research institute prototyped a computer with windows and icons (in 1960s!). xerox PARC researches adopted these ideas into their prototypes that steve jobs came across. jobs first built lisa, a failure, then the macintosh, a success because it was cheaper and easier to use without the user having to learn the nitty gritty of a computers.
+
+in 1999, apple adopted a microkernel developed at CMU called Mach. thus was born Mac OS X. modern mac os x is based off a variant of unix called freeBSD.
+
+for about 10 years (1985-1995), windows was a graphical layer on top of ms-dos. then with windows 95, it became its own thing.
+
+unix users tend to prefer the cli so unix comes only with minimal gui support called the X Windowing System. KDE and Gnome build on this system to provide a better ui to the system.
+
+nokia N9000 was the first device to combine a phone and a PDA (personal digital assistant). RIM released blackberry os in 2002 and Apple iOS in 2007, and then Android in 2008. we won't talk about the history since then. around the world, android basically has the lion's share of the smartphone marketshare (~80%).
+
+**hardware review
+**===============
+
+**Processors**
+
+major components are cpu, memory and i/o devices. (i/o is a broad classification that includes a whole bunch of devices, and each has a controller that interfaces the cpu and memory with the i/o device.
+
+instructions are specific to processor ISA (x86 vs ARM etc). registers are a thing because memory access takes too long compared to how long it takes to execute an instruction. there are speical registers like program status word, program counter and stack pointer. when the os multiplexes programs on a computer, it is responsible for saving the registers of the program being swapped out.
+
+when running in kernel mode (some of the os runs in kernel mode) (determined by a bit stored in the psw), the cpu can access every instruction. user programs ofc always run in user mode (not counting systems calls). just saying the user can’t directly run certain instructions.
+
+remeber: program counter, stack pointer, program status word (PSW consists of condition codes + a bit to indicate mode + other control bits)
+
+processors today are really optimized so they have deep pipelines and plenty of tricks. superscalar processors are when it has multiple execution units for different instruction types and it fetches into a buffer. when an execution unit becomes available, it pulls in the next suitable instruction and executes it. this often results in out of order execution. For the most part, it is up to the hardware to make sure the result produced is the same one a sequential implementation would have produced, but an annoying amount of the complexity is foisted onto the operating system, as we shall see (and onto compilers, says the book).
+
+TRAPs are when the OS gets control either because a system call was made or there was a hardware exception (like divide by 0) and control is passed to the OS to handle it (which may pass it back for the user program to handle).
+
+Moore's law is that num of transistors on a chip doubles every ~18 months. what do you do with more transistors? make things superscalar, make bigger caches and what Intel did was have hyperthreading - this speeds up multithreading, NOT by having duplicate execution units but by maintaining state of both threads so that switching is super fast. eg: when one thread needs to read a memory block then switch that thread out real fast. note multithreading (implemented as hyperthreding) on intel processors is not true parallelism. also both threads have to be part of same process.
+
+multicore is when you have multiple complete processors, each with its own indpendent cpu on one cpu chip. Intel Xeon Phi is 60 core!
+
+GPUs have thousands of tiny cores. They are good for specific types of computation that should be run parallely, like encryption, network traffic processing and rendering.
+
+**Memory and Disk:**
+
+Caches speed up access. Access to registers costs almost nothing. Access to data in L1 cache is almost no delay and to L2 cache costs roughly 2 cycles. If its a cache miss and goes to memory, costs about 100 cycles. caches need to be fast, big an cheap. in practice, this hasn't yet been achieved so we have multiple cache layers, each faster and smaller than the one below it. In multicores chip, caches may (Intel chips) or may not (AMD chips) be shared between cores.
+
+main memory is RAM, which can't keep its contents when powered off. ROM, can keep contents but is programmed at manufacturing time and cannot be changed. it is fast and inexpensive. flash is also non-volatile (can hold stuff when off), can be read quickly but takes more time to write than it does to write to RAM. hence, flash used in portable electronic devices and as storage. cmos is memory that is volatile but draws very little power - so little it can just use the factory installed battery for several years. it also holds some config params like what hard disk to use. when it does begin to fail some very weird issues occur.
+
+disk is typically slower to access cuz its mechanical device with cylinders, concentric circles of data and a physical arm that moves to read and write datay. a track is one concetric circle that an arm can read. tracks are broken down into segments, each about 512 bytes. Solid State Disks do not contain moving parts, they use flash memory. SSDs are called disks only cuz they hold a bunch of data that is not lost on turning power off.
+
+During context switches (switching from one process to another), it may be necessary to flush cache to memory. this is expensive and programers try to avoid this.
+
+**I/O Devices:**
+
+These could be a whole bunch of things: keyboards, mouses, disk, etc. they usually consist of the device itself and an embedded controller that provides an interface to the OS. The software that talks to a controller, giving it commands and accepting responses, is called a device driver. Device controllers have a small number of registers that are used by the device driver to talk to the device (like what to load or where to write to, etc). Collection of all device registers is called the I/O port space. Device registers could either be mapped to memory addresses so they can be read and written to with memory read/write instructions or could be in special registers that require special instructions to read/write.
+
