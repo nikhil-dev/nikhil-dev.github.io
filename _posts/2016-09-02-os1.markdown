@@ -6,7 +6,7 @@ categories: jekyll update
 permalink: os-ch-1-part-1
 ---
 
-Here are my notes from the first half of the frist chapter of the book Modern Operating Systems, by Tanenbaum and Bos.
+Here are my notes from the first half of the first chapter of the book Modern Operating Systems, by Tanenbaum and Bos.
 
 **introduction**
 ============
