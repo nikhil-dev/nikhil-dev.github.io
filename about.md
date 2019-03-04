@@ -15,5 +15,5 @@ I studied computer science at Georgia Tech with focus areas in [AI][ai-gatech] a
 [qualcomm]: https://www.qualcomm.com/news/onq/2013/10/10/introducing-qualcomm-zeroth-processors-brain-inspired-computing
 [ai-gatech]: http://www.cc.gatech.edu/intelligence
 [systems-gatech]: http://www.cc.gatech.edu/systems-architecture
-[atg]: www.uberatc.com
-[uber-ai]: www.uber.ai
+[atg]: https://www.uber.com/info/atg/
+[uber-ai]: https://www.uber.com/us/en/uberai/
