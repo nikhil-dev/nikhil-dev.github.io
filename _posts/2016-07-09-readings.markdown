@@ -1,69 +1,16 @@
 ---
 layout: post
-title:  "Things I've been Reading & Watching"
-date:   2016-06-25 18:37:23 -0700
+title:  "Hello, World!"
+date:   2019-03-04 18:37:23 -0700
 categories: jekyll update
-permalink: the-interesting-internet
+permalink: hello-world
 ---
 
-I'll use this post to share things I've found interesting on the web. I'll update this in batches every once in a while.
-
-
-[Concurrency Is Not Parallelism][concurrency_parallelism]
--
-Rob Pike's talk on the difference between concurrency and parallelism. Rob worked on Unix at Bell Labs and now works on the Go programming language at Google.
-
--
--
-
-[How Has The Internet Made Our Lives Better Really?][eric-thiel]
--
-People in the tech industry often argue about its benefits. In this debate, Peter Thiel and Eric Schmidt dig a bit into how much the internet has really made our lives better, and more interestingly, **how it hasn't** (yet).
-
--
--
-
-[The Future of Programming][future of programming]
--
-Bret Victor talks about the future of programming as it presented itself in 1973.
-     
-   
--
--
-
-[The Last Lecture][randy]
-----------
-Professor Randy Pausch's advice on career and personal goals.
-  
--
--     
-
-[Stripe][stripe-story]
-----------
-Patrick Collison, co-founder of Stripe, gives a fascinating talk about the Stripe journey.
-
--
--
 
 [Do Great Things][justin-do-great-things]
 ---------
-Justin Rosenstein, co-founder of Asana, talks about working on things at the intersection of what "makes humanity thrive and makes you thrive".
+Hello, World!
 
-
-
-
-
-
-
-
-
-
-
-[concurrency_parallelism]: https://vimeo.com/49718712
-[eric-thiel]: https://www.youtube.com/watch?v=PsXFwy6gG_4
-[future of programming]: https://vimeo.com/71278954
-[randy]: https://www.youtube.com/watch?v=ji5_MqicxSo
-[stripe-story]: https://www.youtube.com/watch?v=pG3ppXsfzqU
 [justin-do-great-things]: https://www.youtube.com/watch?v=sNwWZQpbuvM
 
 
