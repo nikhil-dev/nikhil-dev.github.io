@@ -8,7 +8,6 @@ permalink: hello-world
 
 
 [Do Great Things][justin-do-great-things]
----------
 Hello, World!
 
 [justin-do-great-things]: https://www.youtube.com/watch?v=sNwWZQpbuvM
